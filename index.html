@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div>
+    <input type="text" data-modal="userName">
+    <span data-text="userName"></span>
+</div>
+
+
+<div>
+    <input type="text" data-modal="Vasia">
+    <span data-text="Vasia"></span>
+</div>
+
+
+
+<script src="script.js"></script>
+<script>
+    function pageController() {
+        var self = this;
+
+        self.userName = mk.observable("awdawd");
+        self.value = mk.observable();
+    }
+
+    mk.applybind(new pageController());
+
+</script>
+</body>
+</html>
