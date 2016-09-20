@@ -27,9 +27,9 @@
                 oneModal.addEventListener('keyup', function () {
                     oneText.innerHTML = oneModal.value;
                 });
-                console.log(item);
             });
         }
+
 
         this.collections = {
             modal: [],
@@ -37,33 +37,25 @@
         };
 
         this.applybind = function (data) {
+            console.log(data);
             createCollections();
             events();
-
-
-            console.log(this.collections);
         };
 
-        this.observable = function () {
-            var attributeName = "data-bind";
+        this.observable = function (data) {
 
-            /*var elems = document.body.childNodes;
-             console.log(elems[0]);
-             var arr = Array.prototype.slice.call( elems, 0 );
+            function result(newValue) {
+                if(newValue) result.value = newValue;
+                return result.value;
+            }
 
-             elems.forEach(function(item, i, arr) {
-             //console.log( i + ": " + item + " (массив:" + arr + ")" );
-             });
-             var nameLengths = arr.map(function(elem) {
-             if(elem.dataset !== undefined){
-             console.log(elem.dataset.getDataAttr());
-             }
+            result.subscribe = function (personFunction) {
+                personFunction(result.value);
+            };
 
-             //return elem.dataset.bind;
-             });*/
-            //var show = msglist.getAttribute("data-bind");
-            /*console.log(elems);
-             console.log(arr);*/
+            result.value = data || null;
+
+            return result;
         }
     }
 

@@ -21,14 +21,39 @@
 
 <script src="script.js"></script>
 <script>
-    function pageController() {
+    var myViewModel = {
+        personName: mk.observable('Bob'),
+        personAge:  mk.observable()
+    };
+
+
+    /*console.log(myViewModel.personName());
+    console.log(myViewModel.personAge());
+    mk.applybind(myViewModel);*/
+    /*mk.applybind(myViewModel);
+    myViewModel.personName();
+    console.log(myViewModel.personName());*/
+    console.log(myViewModel.personName());
+
+
+    myViewModel.personName.subscribe(function(newValue) {
+                alert("The person's new name is " + newValue);
+            }
+    );
+
+    mk.applybind(myViewModel);
+
+
+    //mk.applybind();
+
+    /*function pageController() {
         var self = this;
 
         self.userName = mk.observable("awdawd");
         self.value = mk.observable();
     }
 
-    mk.applybind(new pageController());
+    mk.applybind(new pageController());*/
 
 </script>
 </body>
